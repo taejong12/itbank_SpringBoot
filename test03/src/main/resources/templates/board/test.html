@@ -1,31 +1,50 @@
 <!DOCTYPE html>
+<!-- th:* 속성(th:text, th:if 등)을 Thymeleaf 문법으로 인식하게 해줌 -->
 <html xmlns:th="http://thymeleaf.org">
 	<head>
 		<meta charset="utf-8">
 		<title>테스트</title>
 	</head>
 	<body>
+		<!-- user 라는 변수가 null이 아니면 출력 -->
 		<p th:if="${user != null}">로그인된 사용자</p>
+		<!-- user 라는 변수가 null이면 출력 
+			th:unless = 조건이 거짓일 때 실행하는 문법
+		-->
 		<p th:unless="${user != null}">비회원 사용자</p>
+		<!-- th:with = 임시 변수를 만들어서 내부에서 사용할 때 쓰는 문법 -->
 		<div th:with="total=${price * quantity}">
 			<p th:text="${total}"></p>
 		</div>
+		<!-- role 이라는 변수를 'admin'으로 설정하고 role 값을 기준으로 switch-case 처럼 분기함 -->
+		<!-- th:switch + th:case = switch-case 문과 같음 -->
 		<div th:with="role='admin'" th:switch="${role}">
 			<p th:case="'admin'">관리자</p>
 			<p th:case="'user'">사용자</p>
 			<p th:case="*">기타 사용자</p>
 		</div>
+		
+		<!-- @{ } 문법은 Spring Boot URL 매핑할 때 씀 -->
 		<a th:href="@{/board/boardList}">글 목록</a>
 		<!--
 			href=/board/getBoard?articleNo=10
 			th:href="@{/board/boardList(articleNo=${board.articleNo})}"
 		-->
+		
+		<!-- 오늘 날짜 (00:00:00 기준) 객체를 생성해서 출력함 -->
 		<p th:text="${#dates.createToday()}"></p>
+		
+		<!-- 지금 이 순간 날짜와 시간 객체를 출력함 -->
 		<p th:text="${#dates.createNow()}"></p>
+		
+		<!-- 지금 시간을 포맷으로 문자열로 변환 -->
 		<p th:text="${#dates.format(#dates.createNow(), 
 				'yyyy-MM-dd HH:mm:ss')}"></p>
+		<!-- 대문자로 바꿔서 출력 -->
 		<p th:text="${#strings.toUpperCase('abcdef')}"></p>
+		<!-- 소문자로 바꿔서 출력 -->
 		<p th:text="${#strings.toLowerCase('ABCDEF')}"></p>
+		<!-- 문자열 길이를 출력 -->
 		<p th:text="${#strings.length('ABCDEF')}"></p>
 	</body>
 </html>
