@@ -17,3 +17,5 @@ insert into board values(board_articleNo.nextval, '반갑습니다.처음뵙겠�
 insert into board values(board_articleNo.nextval, '테스트 작성 글 입니다.', 'hong', '테스트글', sysdate);
 
 commit;
+
+create sequence file_imageNo start with 1;
