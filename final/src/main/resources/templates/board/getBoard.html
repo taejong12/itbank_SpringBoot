@@ -3,8 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<title>글 상세보기</title>
+		<link rel="stylesheet" href="/css/main.css">
 	</head>
 	<body>
+		<div th:insert="~{fragments/header :: header}"></div>
+		<div th:insert="~{fragments/sidebar :: sidebar}"></div>
+		<div th:layout="content" id="content">
 		<h3 align="center">게시글 상세</h3>
 		<form method="post">
 			<table border="1" align="center" width="700">
@@ -50,5 +54,7 @@
 			<a th:href="@{/board/deleteBoard(articleNo=${board.articleNo})}">글삭제</a>
 			<a href="/board/boardList">글목록</a>
 		</div>
+		</div>
+		<div th:insert="~{fragments/footer :: footer}"></div>
 	</body>
 </html>

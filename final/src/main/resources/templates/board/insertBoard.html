@@ -3,8 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<title>새글 등록</title>
+		<link rel="stylesheet" href="/css/main.css">
 	</head>
 	<body>
+		<div th:insert="~{fragments/header :: header}"></div>
+		<div th:insert="~{fragments/sidebar :: sidebar}"></div>
+		<div th:layout="content" id="content">
 		<h3 align="center">게시글 등록</h3>
 		<form method="post" enctype="multipart/form-data">
 			<table border="1" align="center" width="700">
@@ -38,5 +42,7 @@
 		<div align="center">
 			<a href="/board/boardList">글 목록</a>
 		</div>
+		</div>
+		<div th:insert="~{fragments/footer :: footer}"></div>
 	</body>
 </html>
