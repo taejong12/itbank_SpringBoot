@@ -99,7 +99,7 @@ public class MemberControllerImpl implements MemberController{
 			model.addAttribute("message", "아이디나 암호가 잘못 되었습니다. 다시 로그인 하세요.");
 			model.addAttribute("redirectUrl", "/member/loginForm");
 		}
-		return "/common/alert";
+		return "common/alert";
 	}
 
 	@Override
@@ -110,7 +110,7 @@ public class MemberControllerImpl implements MemberController{
 		session.invalidate();
 		model.addAttribute("message", loginId + "님이 로그아웃 하셨습니다.");
 		model.addAttribute("redirectUrl", "/member/loginForm");
-		return "/common/alert";
+		return "common/alert";
 	}
 
 }
